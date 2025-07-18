@@ -28,4 +28,4 @@ Design Ticketmaster:
   - Load Balancer
   - Horizontal Scaling
 
-![TicketMaster](image-1.png)
+![TicketMaster](./Images/TicketMaster.png)
