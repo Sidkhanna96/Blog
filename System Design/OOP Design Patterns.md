@@ -1,10 +1,9 @@
-# Creational: Singleton √, Factory √, Builder √
+# OOP Design Patterns:
 
-# Behavioral: Strategy, Observer
-
-# Structural: Adapter, Decorator
-
-# --- Command, state, facade, MVC
+- Creational: Singleton √, Factory √, Builder √
+- Behavioral: Strategy √, Observer
+- Structural: Adapter, Decorator
+- --- Command, state, facade, MVC
 
 # Creational:
 
@@ -201,10 +200,82 @@ public class Main {
   }
 }
 
+```
+
+## Observer (Subscription Mechanism)
+
+- One to Many relation between objects, one object changes state
+- Subscription mechanism
+- Use Case:
+  - Youtube Channel
+  - Group Chats
+
+```java
+import jave.util.*;
+
+interface Observer{
+  void update(String channelName, string videoTitle);
+}
+
+interface Subject {
+  void subscribe(Observer observer);
+  void notifyObserverse();
+}
+
+public class YoutubeViewer implements Observer{
+  public String viewerName;
+
+  public YoutubeViewer(String viewerName){
+    this.viewerName = viewerName;
+  }
+
+  public void update(String channelName, String videoTitle){
+    System.out.println(channelName + " " + videoTitle + "Uploaded")
+  }
+}
+
+public class YoutubeChannel implements Subject{
+  private String channelName;
+  private String latestVideo;
+  private List<Observer> subscribers;
+
+  public YoutubeChannel(String channelName){
+    this.channelName = channelName;
+    this.subscribers = new ArrayList<>();
+  }
+
+  public void subscribe(Observer observer){
+    this.subscribers.add(observer)
+  }
+
+  public void notifyObserver(){
+    for(Observer subscriber: this.subscribers){
+      subsriber.update(this.channelName, this.latestVideo)
+    }
+  }
+
+  public void uploadVideo(String video){
+    this.latestVideo = video
+    this.notifyObserver()
+  }
+}
+
+public class ObserverPatternDemo{
+  public static void main(String[] args){
+    YouTubeChannel techChannel = new YouTubeChannel("TechTips");
+    YouTubeViewer alice = new YouTubeViewer("Alice");
+
+    techChannel.subscribe(alice);
+
+    techChannel.uploadVideo("10 Best Programming Languages in 2024");
+  }
+}
 
 ```
 
-## Observer
+- Summary -> Publisher is calling the subscriber class at some point to notify when an action happens
+
+- ## Use Case:
 
 # Structural
 
@@ -216,3 +287,4 @@ public class Main {
 
 - https://www.oodesign.com/
 - https://learningdaily.dev/the-7-most-important-software-design-patterns-d60e546afb0e
+- https://refactoring.guru/design-patterns
