@@ -1,7 +1,7 @@
 # OOP Design Patterns:
 
 - Creational: Singleton √, Factory √, Builder √
-- Behavioral: Strategy √, Observer
+- Behavioral: Strategy √, Observer √
 - Structural: Adapter, Decorator
 - --- Command, state, facade, MVC
 
@@ -275,16 +275,112 @@ public class ObserverPatternDemo{
 
 - Summary -> Publisher is calling the subscriber class at some point to notify when an action happens
 
-- ## Use Case:
-
-# Structural
+# Structural: Assemble objects and classes in larger structures
 
 ## Adapter
 
-## Decorator
+- Makes incompatible interfaces work together
+- Use Case:
+  - Change Video Format
+
+```java
+
+interface EuropeanPlug {
+  void plugIn();
+}
+
+class AmericanPlug{
+  public void insertPlug(){
+    System.out.println("American plug inserted");
+  }
+}
+
+class PlugAdapter implements EuropeanPlug {
+  private AmericanPlug americanPlug;
+
+  public plugAdapter(AmericanPlug americanPlug){
+    this.americanPlug = americanPlug;
+  }
+
+  public void plugIn(){
+    americanPlug.inserPlug();
+  }
+}
+
+public class AdapterDemo {
+  public static void main(String[] args){
+    AmericanPlug americanPlug = new AmericanPlug();
+    EuropeanPlug adapter = new PlugAdapter(americanPlug);
+
+    adapter.plugIn();
+  }
+}
+```
+
+- Summary: It enables one class (American Plug) interface to behave like another class (European Plug) by using an adapter class (PlugAdapter) in the middle
+
+## Decorator:
+
+- Extend an objects functionality at runtime - normally done at compile time using inheritance
+- Allows adding behaviour to individual objects dynamically without affecting the behaviour of other objects belonging to the same class
+
+- Structure:
+- Component Interface
+- Concrete Component
+- Decorator Interface/Abstract
+- ConcreteDecorator Interface/Abstract
+
+```java
+// Component Interface
+public interface Coffee{
+  double getCost();
+}
+
+// Decorator Interface/Abstract
+public abstract CoffeeDecorator implements Coffee {
+  protected Coffee decoratedCofee;
+
+  public CoffeeDecorator(Coffee decoratedCoffee) {
+    this.decoratedCofee = decoratedCoffee;
+  }
+
+  public double getCost(){
+    return decoratedCoffee.getCost();
+  }
+}
+
+public class PlainCoffee implements Coffee {
+    public double getCost() {
+        return 2.0;
+    }
+}
+
+public class MilkDecorator extends CoffeeDecorator {
+    public MilkDecorator(Coffee decoratedCoffee) {
+        super(decoratedCoffee);
+    }
+
+    public double getCost() {
+        return decoratedCoffee.getCost() + 0.5;
+    }
+}
+
+public class Main{
+  public static void Main(String[] args){
+    Coffee coffee = new PlainCofee();
+    System.out.println(coffee.getCost()); // 2
+
+    Coffee milkCoffee = new MilkDecorator(new PlainCoffee());
+    System.out.println(milkCoffee.getCost()); // 2.5
+  }
+}
+
+```
+
+- Summary: The object created from the decorator can pick up data from the original interface object and augment to it
 
 # Resources:
 
 - https://www.oodesign.com/
 - https://learningdaily.dev/the-7-most-important-software-design-patterns-d60e546afb0e
-- https://refactoring.guru/design-patterns
+- Chat GPT
