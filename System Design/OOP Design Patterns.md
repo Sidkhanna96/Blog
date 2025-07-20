@@ -2,8 +2,8 @@
 
 - Creational: Singleton √, Factory √, Builder √
 - Behavioral: Strategy √, Observer √
-- Structural: Adapter, Decorator
-- --- Command, state, facade, MVC
+- Structural: Adapter √, Decorator √
+- --- Command, state, facade, iterator, MVC
 
 # Creational:
 
@@ -186,6 +186,10 @@ public class Robot {
   public void setBehavior(IBehavior behavior) {
     this.behavior = behavior;
   }
+
+  public void move(){
+    this.behaviour.moveCommand();
+  }
 }
 
 public class Main {
@@ -195,6 +199,8 @@ public class Main {
 
     r1.setBehavior(new AggresiveBehavior);
     r2.setBehavior(new DefensiveBehavior);
+
+    r1.move() // Notice how regardless of the behaviour for strategy passed it will trigger the proper method of the robot class
 
     // Some logic and then set new behavior
   }
@@ -273,7 +279,7 @@ public class ObserverPatternDemo{
 
 ```
 
-- Summary -> Publisher is calling the subscriber class at some point to notify when an action happens
+- Summary -> The Subscribers are attched to the publishers state management array, Publisher is calling the subscriber classes notification system
 
 # Structural: Assemble objects and classes in larger structures
 
@@ -303,7 +309,7 @@ class PlugAdapter implements EuropeanPlug {
   }
 
   public void plugIn(){
-    americanPlug.inserPlug();
+    americanPlug.insertPlug();
   }
 }
 
