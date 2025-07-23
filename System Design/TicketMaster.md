@@ -5,6 +5,8 @@
 - When Booking a ticket the eventId is stored in Redis DB
 - This way whenever someone else tries to fetch tickets for the same event they're prevented by the event service to display the tickets (Can do constant polling)
 - TTL on the lock - so that if user drops is available
+- Mark the ticket as in progress so when another user tries to book it it will be unavailable temporarily
+- Redlock Algorithm used for multiple instances of redis
 
 ### Popular Event:
 
