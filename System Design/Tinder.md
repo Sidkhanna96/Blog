@@ -3,7 +3,7 @@
 - Profile and matching service - 2 DBs + 1 elastic search
 - Cassandra for high write
 - DB Transactions
-- Redis + CRON Job
+- Redis + CRON Job + ElasticSearch
 - client side caching
 
 # FR

@@ -1,7 +1,7 @@
 # Main Topics
 
 - Websocket connection
-- Pub/Sub -> Multiple chat server talking to each other
+- Pub/Sub -> Users subscribe to topic -> when on chat server the chat server connects to the given topic of pub/sub - when message triggered all chat servers subscribed to the topic receive it.
 - Inbox table for undelivered message per client device basis
 
 # FR
