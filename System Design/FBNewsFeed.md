@@ -1,7 +1,7 @@
 ## Main Topics
 
 - Post, Follow, Feed Service
-- GIS - global secondary index
+- GSI - global secondary index - timestamp enables us to fetch data pagination
 - Fanout - precomputed feed
 - Updating pre-computed feed with queues and feed workers for non high following users and merging the post feed
 - distributed cache between the feed service and posts table
