@@ -1,5 +1,9 @@
 ## Main Topics
 
+- SSE
+- Pub/Sub
+- Curor Pagination
+
 ## FR
 
 - User can add comments
@@ -35,4 +39,4 @@
     - Comments sent to machine 1 can be received by viewers on machine 1 easily since SSE sends the comments but machine 2 cannot
       - We would need to send the comments to multiple servers
     - Layer 7 LB along with partitioned pub/sub on videoId
-      - All users connected to the same server for the videoId so can subscribe to the same topic to receive SSE
+      - Each videoId will publish to a given topic and each Messaging system will subscribe to videoId topic and receive comments as its subscribed to it as comments are published to said topic for a videoId - multiple topics will hold multipl videoIds comments
