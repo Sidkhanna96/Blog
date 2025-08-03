@@ -20,6 +20,8 @@
 
 ## Deep Dives
 
+![alt text](./Images/GoogleDocs.png)
+
 - Multiple Users should be able to edit the document concurrently
 
   - Establish a Websocket connection to document service
@@ -39,10 +41,9 @@
     - User A changes receive the server first and then User B side pulls the websocket changes instead of naively applying the changes locally for User A transaction we need to then progressively do a OT client side to maintain consistency.
 
 - Cursor position:
+
   - Store the cursor position in memory - its ephemeral data
   - Websocket broadcast it to all the other servers
-
-![alt text](./Images/GoogleDocs.png)
 
 - Websocket cannot be scaled to millions of users:
 
