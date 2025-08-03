@@ -1,10 +1,11 @@
 ## Main Topics
 
-- Post, Follow, Feed Service
+- GSI, DynamoDB, Queue, Cache, Pre-computation
+
 - GSI - global secondary index - timestamp enables us to fetch data pagination
-- Fanout - precomputed feed
-- Updating pre-computed feed with queues and feed workers for non high following users and merging the post feed
-- distributed cache between the feed service and posts table
+- Precomputation of feed - Fanout
+- Queue - Updating pre-computed feed with queues and feed workers for non high following users and merging the post feed
+- Redis - distributed cache between the feed service and posts table
 
 ## FR
 
@@ -31,7 +32,7 @@
 
   - We would need to parse through a large set of users and their associated posts
   - Rather on reading the list of posts -> you pre-compute postIds on write for each user in the system
-  - So each UserId will have postIds of all its followers attached to it on write
+  - So each UserId will have postIds of all of whob they follow attached to it on write
 
 - How do we handle large number of followers:
 

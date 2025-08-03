@@ -1,7 +1,9 @@
 # Main Topics
 
+- Websockets, Pub/Sub, GSI
+
 - Websocket connection
-- Pub/Sub -> Users subscribe to topic -> when on chat server the chat server connects to the given topic of pub/sub - when message triggered all chat servers subscribed to the topic receive it.
+- Pub/Sub -> Users subscribe to topic -> when on chat server the chat server connects to the given topic of pub/sub - when message triggered all userId topics get messages pushed to them.
 - Inbox table for undelivered message per client device basis
 
 # FR
@@ -33,10 +35,9 @@
   - We can do some form of consistent hashing where userId has chat server listed and then look up the chat registry and send the message to it -> This also leads to that each chat server would need to talk to each other
   - Best:
     - We are sending messages between servers -> Use Pub/Sub model
-    - Create a subscription for userId for a given group chat
-    - Chat server will connect to pub/sub to subscribe to the topics of the user who just logged into that chat server
-    - any messages received on the subscription topic are forwarded to the websocket connection
-    - If clients are not connected they will receive all the undelivered messages when they log in based on inbox above
+    - Create a subscription for userId
+    - When user connects to chat server that server will connect to the topic the userId subscribes to -> Any messages on the topic are pushed to the user
+    - Sending messages - we publish the messages to the relevant users of the given chatId
 
 - Multiple devices for a single user
   - Clients table for the user devices
