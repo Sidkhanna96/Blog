@@ -1,6 +1,6 @@
 # Uber
 
-# Main Topics:
+## Main Topics:
 
 - Polling for Location Update
 - Redis for managing polling high writes
@@ -25,9 +25,9 @@
 - Finding Driver Service
 - Notification Service that finding driver service triggers -> Apple Push Notification and FireBase Cloud Messaging
 
-![alt text](./Images/Uber.png)
-
 ## Deep Dives:
+
+![Uber](./Images/Uber.png)
 
 - High Frequency of Writes -> 10 M drivers every 5 seconds => 2M per second AND efficient proximity searches
 
