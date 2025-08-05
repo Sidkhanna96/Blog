@@ -1,17 +1,17 @@
-# Main Topics
+## Main Topics
 
-# FR
+## FR
 
 - Crawl web pages and go from one link to another on the web pages (Start from seed URLs)
 - Extract Text data and store the text for later processing
 
-# Services
+## Services
 
 - Web Crawler - Extract URL, domain, HTML
 - Parser - Text and Associated Links
 - 2 Queues
 
-# Deep Dive
+## Deep Dive
 
 ![alt text](./Images/WebCrawler.png)
 
