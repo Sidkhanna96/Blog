@@ -2,7 +2,7 @@
 
 - SSE
 - Pub/Sub
-- Curor Pagination
+- Cursor Pagination
 
 ## FR
 
