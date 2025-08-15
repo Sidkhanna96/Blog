@@ -4,3 +4,5 @@
 - Tinder
 - Job Scheduler
 - FBPostSearch
+- Youtube
+- Stripe
